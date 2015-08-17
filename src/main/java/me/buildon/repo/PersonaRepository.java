@@ -13,5 +13,5 @@ public interface PersonaRepository extends MongoRepository<Persona, String> {
 
 	List<Persona> findByName(@Param("name") String name);
 	Persona findOneByName(@Param("name") String name);
-
+	Persona findOneByPid(@Param("pid") Long pid);
 }

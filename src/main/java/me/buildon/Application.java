@@ -44,6 +44,7 @@ public class Application {
           accountRepository.save(new Account("jeff", "jeff"));
           personaRepository.deleteAll();
           Persona spiderman = new Persona("Spiderman");
+          spiderman.setPid(1);
           spiderman.addTag("Superhero");
           spiderman.addTag("Generally swell guy");
           personaRepository.save(spiderman);

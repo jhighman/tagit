@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response xmlns="http://localhost/persona/1">
+   <_embedded>
+      <persona>
+         <e>
+            <_links>
+               <self>
+                  <href>http://localhost:8080/persona/55d2320d626bbd2978f730c5</href>
+               </self>
+            </_links>
+            <name>Spiderman</name>
+            <pid>1</pid>
+            <tags>
+               <e>
+                  <tag>Superhero</tag>
+               </e>
+               <e>
+                  <tag>Generally swell guy</tag>
+               </e>
+            </tags>
+         </e>
+      </persona>
+   </_embedded>
+   <_links>
+      <search>
+         <href>http://localhost:8080/persona/search</href>
+      </search>
+      <self>
+         <href>http://localhost:8080/persona{?page,size,sort}</href>
+         <templated>true</templated>
+      </self>
+   </_links>
+   <page>
+      <number>0</number>
+      <size>20</size>
+      <totalElements>1</totalElements>
+      <totalPages>1</totalPages>
+   </page>
+</Response>

@@ -13,39 +13,39 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import me.buildon.domain.ObjectWithId;
-import me.buildon.domain.SkillTag;
-import me.buildon.service.SkillTagService;
+import me.buildon.domain.Persona;
+import me.buildon.service.PersonaService;
 
 @RestController
-@RequestMapping("/skillTag")
-public class SkillTagRestController {
+@RequestMapping("/api")
+public class ApiController {
 
-    private SkillTagService skillTagService;
+    private PersonaService personaService;
+    
 
-    private Logger logger=LoggerFactory.getLogger(SkillTagService.class);
+    private Logger logger=LoggerFactory.getLogger(PersonaService.class);
 
 
-    //Note: The @Named("skillTagService") is not required in this example (as there only instance of BookService around)
+    //Note: The @Named("personaService") is not required in this example (as there only instance of BookService around)
     @Inject
-    public SkillTagRestController(@Named("skillTagService") SkillTagService skillTagService )
+    public ApiController(@Named("personaService") PersonaService skillTagService )
     {
-        this.skillTagService=skillTagService;
+        this.personaService=skillTagService;
     }
 
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public SkillTag getBook(@PathVariable("id") Long id) {
+    public Persona getPersona(@PathVariable("id") Long id) {
         logger.debug("Provider has received request to get person with id: " + id);
         
-        return skillTagService.getSkillTag(id);
+        return personaService.getPersona(id);
     }
 
     @RequestMapping(value = "/add",  method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public ObjectWithId addBook(@RequestBody SkillTag skillTag)
+    public Long registerPersona(@RequestBody Persona persona)
     {
-        return new ObjectWithId(skillTagService.addSkillTag(skillTag));
+        return personaService.registerPersona(persona);
     }
 }

@@ -16,8 +16,23 @@ public class Persona {
 		super();
 		this.name = name;
 	}
+	
+	public Persona(String name, long pid) {
+		super();
+		this.name = name;
+		this.pid = pid;
+	}
+
+	public long getPid() {
+		return pid;
+	}
+
+	public void setPid(long pid) {
+		this.pid = pid;
+	}
 
 	@Id private String id;
+	private long pid; // user assigned identifier
 	private String name;
 	private List<Tag> tags;
 
@@ -25,9 +40,6 @@ public class Persona {
 		return tags;
 	}
 
-//	public void setTags(List<Tag> tags) {
-//		this.tags = tags;
-//	}
 
 	public String getName() {
 		return name;

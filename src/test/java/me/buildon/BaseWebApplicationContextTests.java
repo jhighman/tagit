@@ -17,8 +17,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.GenericWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
-import me.buildon.controller.SkillTagRestController;
-import me.buildon.service.SkillTagService;
+import me.buildon.controller.ApiController;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"file:src/main/webapp/WEB-INF/applicationContext.xml"})
@@ -37,8 +36,8 @@ public abstract class BaseWebApplicationContextTests {
 
     protected MockHttpServletRequest request;
     protected MockHttpServletResponse response;
-    protected SkillTagRestController controller2;
-    protected SkillTagService skillTagService;
+    protected ApiController controller2;
+    //protected SkillTagService skillTagService;
 
 
     @Before
@@ -64,8 +63,8 @@ public abstract class BaseWebApplicationContextTests {
         request = new MockHttpServletRequest();
         response = new MockHttpServletResponse();
 
-        controller2 = (SkillTagRestController) applicationContext.getBean("skillTagRestController");
-        skillTagService = (SkillTagService)applicationContext.getBean("skillTagService");
+        controller2 = (ApiController) applicationContext.getBean("apiController");
+        //skillTagService = (SkillTagService)applicationContext.getBean("skillTagService");
         
         MockServletContext servletContext = new MockServletContext("src/main/webapp", new FileSystemResourceLoader());
 
