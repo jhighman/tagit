@@ -40,6 +40,8 @@ public class Application {
  
         @Override
         public void run(String... arg0) throws Exception {
+        	
+        	//db.sequence.insert({_id: "hosting",seq: 0})
         	accountRepository.deleteAll();
           accountRepository.save(new Account("jeff", "jeff"));
           personaRepository.deleteAll();

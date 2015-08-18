@@ -9,7 +9,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import me.buildon.domain.Persona;
 
 @RepositoryRestResource(collectionResourceRel = "persona", path = "persona")
-public interface PersonaRepository extends MongoRepository<Persona, String> {
+public interface PersonaRepository extends MongoRepository<Persona, String>, PersonaCustomOperations {
 
 	List<Persona> findByName(@Param("name") String name);
 	Persona findOneByName(@Param("name") String name);
