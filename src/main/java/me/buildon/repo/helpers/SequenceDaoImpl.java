@@ -1,8 +1,11 @@
-package me.buildon.repo;
+package me.buildon.repo.helpers;
+
+import javax.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -16,6 +19,9 @@ public class SequenceDaoImpl implements SequenceDAO {
 	@Autowired
 	private MongoOperations mongoOperation;
 
+	@Inject
+	private MongoTemplate mongoTemplate;
+	
 	@Override
 	public long getNextSequenceId(String key) throws SequenceException {
 		
@@ -37,11 +43,21 @@ public class SequenceDaoImpl implements SequenceDAO {
 	  //if no id, throws SequenceException
           //optional, just a way to tell user when the sequence id is failed to generate.
 	  if (seqId == null) {
-		throw new SequenceException("Unable to get sequence id for key : " + key);
+		  seqId = registerSequenceId(key);
+		  //throw new SequenceException("Unable to get sequence id for key : " + key);
 	  }
 
 	  return seqId.getSeq();
 
+	}
+
+	@Override
+	public SequenceId  registerSequenceId(String key) {
+		SequenceId sequence = new SequenceId();
+		sequence.setId(key);
+		sequence.setSeq(1);
+		mongoTemplate.save(sequence);
+		return sequence;
 	}
 
 }

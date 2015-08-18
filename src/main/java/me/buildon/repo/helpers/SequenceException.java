@@ -1,4 +1,4 @@
-package me.buildon.repo;
+package me.buildon.repo.helpers;
 
 public class SequenceException extends RuntimeException {
 
