@@ -43,10 +43,11 @@ public class Application {
         	
         	//db.sequence.insert({_id: "hosting",seq: 0})
         	accountRepository.deleteAll();
+        	
+        	//TODO move the credentials into a property file
           accountRepository.save(new Account("jeff", "jeff"));
-          personaRepository.deleteAll();
+          // Initalize database
           Persona spiderman = new Persona("Spiderman");
-          //spiderman.setPid(1);
           spiderman.addTag("Superhero");
           spiderman.addTag("Generally swell guy");
           personaRepository.save(spiderman);

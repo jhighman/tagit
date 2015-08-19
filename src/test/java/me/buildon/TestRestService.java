@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-public class TestRestService2 extends BaseWebApplicationContextTests {
+public class TestRestService extends BaseWebApplicationContextTests {
 
     
 //    @Test

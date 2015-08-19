@@ -40,20 +40,16 @@ public class PersonaRepositoryImpl implements PersonaCustomOperations  {
 			return persona;
 		}
 		persona.setPid(sequenceDao.getNextSequenceId(PERSONA_SEQ_KEY));
-		System.out.println("Overrideing Save");
 		mongoTemplate.save(persona);
 		return persona;
 	}
 
 	private boolean alreadyExists(Persona persona){
 		boolean result = false;
-		System.out.println("name " + persona.getName());
-		
 		Query query = new Query(Criteria.where("name").is(
 				persona.getName()));
 		long c = mongoTemplate.count(query, Persona.class,
-				"persona");
-		System.out.println("Already Exists: " + c);
+				PERSONA_SEQ_KEY);
 		if(c>0){
 			result = true;
 		} 
