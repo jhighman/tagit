@@ -5,6 +5,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Tag {
 
+	// This is a comment to check to see if it works
+	
 	public Tag(String tag) {
 		super();
 		this.tag = tag;
